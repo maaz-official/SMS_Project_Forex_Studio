@@ -14,7 +14,13 @@ dotenv.config();
 // app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 
 app.use(express.json({ limit: '10mb' }))
-app.use(cors({ origin: 'https://sms-project-forex-studio.vercel.app' }));
+app.use(cors({
+    origin: 'https://sms-project-forex-studio.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // if you're using cookies or sessions
+    optionsSuccessStatus: 200 // some legacy browsers choke on 204
+}));
+
 
 mongoose
     .connect(process.env.MONGO_URL, {
