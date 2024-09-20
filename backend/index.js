@@ -16,7 +16,7 @@ dotenv.config();
 app.use(express.json({ limit: '10mb' }))
 
 app.use(cors({
-  origin: 'https://localhost:3000', // Allow your frontend's origin
+  origin: 'https://sms-project-forex-studio-yk8a.vercel.app', // Allow your frontend's origin
   methods: 'GET,POST,PUT,DELETE',
   credentials: true // if cookies or other credentials are being sent
 }));
