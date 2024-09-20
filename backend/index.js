@@ -15,11 +15,14 @@ dotenv.config();
 
 app.use(express.json({ limit: '10mb' }))
 app.use(cors({
-    origin: 'https://sms-project-forex-studio.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // if you're using cookies or sessions
-    optionsSuccessStatus: 200 // some legacy browsers choke on 204
+    origin: 'https://sms-project-forex-studio.vercel.app', // Your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true, // If you're using cookies or authorization headers
+    optionsSuccessStatus: 200
 }));
+
+// Allow preflight requests for all routes
+app.options('*', cors());
 
 
 mongoose
