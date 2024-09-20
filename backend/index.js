@@ -15,13 +15,11 @@ dotenv.config();
 
 app.use(express.json({ limit: '10mb' }))
 
-const corsOptions ={
-    origin:'https://sms-project-forex-studio-backend.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
-
+app.use(cors({
+  origin: 'https://sms-project-forex-studio.vercel.app', // Allow your frontend's origin
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true // if cookies or other credentials are being sent
+}));
 
 mongoose
     .connect(process.env.MONGO_URL, {
